@@ -15,6 +15,22 @@
 
   <body>
     <h1 class="text-danger text-center">Hola</h1>
-    <form runat="server"></form>
+
+    <form runat="server">
+      <asp:Button
+        ID="btnclick"
+        runat="server"
+        Text="Click"
+        onclick="btnclick_Click"
+        class="btn btn-primary"
+      />
+      <asp:Label
+        ID="ASPxLabel2"
+        runat="server"
+        Text="Color"
+        ClientInstanceName="label"
+      />
+    </form>
+    <div class="container" ID="DVD" runat="server"></div>
   </body>
 </html>

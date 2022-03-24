@@ -7,14 +7,43 @@ namespace MiPagina
 {
     public class Actividad3 : Page
     {
+        public Estadisticas estadisticas = new Estadisticas();
+        public Label ASPxLabel2;
+        protected void Page_Init(object sender, EventArgs e)
+        {
+            String tabla = @"<table class='table table-striped table-dark'>
+        <thead>
+            <tr>
+              <th scope='col'>#</th>
+              <th scope='col'>Boleta</th>
+              <th scope='col'>Nombre</th>
+              <th scope='col'>Calificacion</th>
+            </tr>
+        </thead>
+
+          <tbody>
+ ";
+            var i = 0;
+            foreach (Alumno alumno in estadisticas.alumnos)
+            {
+                tabla += @"
+                    <tr>
+                        <th scope='row'>" + (i + 1) + @"</th>
+                        <td>" + alumno.Boleta + @"</td>
+                        <td>" + alumno.Nombre + @"</td>
+                        <td>@fat</td>
+                    </tr>
+                ";
+                i++;
+
+            }
+
+            tabla += "   </tbody>  </table>";
+            ASPxLabel2.Text += tabla;
+        }
         public void btnclick_Click(object sender, EventArgs e)
         {
 
-
-            string container = "<div>";
-
-
-            container += "</div>";
 
         }
     }
@@ -53,7 +82,7 @@ namespace MiPagina
     }
     public class Estadisticas
     {
-        private List<Alumno> alumnos = new List<Alumno>();
+        public List<Alumno> alumnos = new List<Alumno>();
 
         public Estadisticas()
         {

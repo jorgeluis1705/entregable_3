@@ -49,12 +49,12 @@ namespace MiPagina
 
                             <select class='custom-select' id='ddlColors' name='Fruit'     >
                                 <option value='0'>0</option>
-                                <option value='1'>1</option>
+                                <option value='1' selected>1</option>
                                 <option value='2'>2</option>
                                 <option value='3'>3</option>
                                 <option value='4'>4</option>
                                 <option value='5'>5</option>
-                                <option value='6' selected>6</option>
+                                <option value='6' >6</option>
                                 <option value='7'>7</option>
                                 <option value='8'>8</option>
                                 <option value='9'>9</option>
@@ -163,7 +163,6 @@ namespace MiPagina
 
         public double CantidadAprobados()
         {
-            var resultado = 0;
             var CantApro = 0;
             foreach (Alumno alumno in alumnos)
             {
@@ -176,7 +175,6 @@ namespace MiPagina
         }
         public double CantidadReprobados()
         {
-            var resultado = 0;
             var CantReprobados = 0;
             foreach (Alumno alumno in alumnos)
             {

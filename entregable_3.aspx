@@ -1,7 +1,8 @@
-<%@Page Language="C#" src="pagina.aspx.cs" Inherits="MiPagina.Actividad3" %>
+<%@Page AutoEventWireup="true" Language="C#" src="pagina.aspx.cs"
+Inherits="MiPagina.Actividad3" %>
 
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head runat="server">
     <title>Covevaluacion 3 Jorge Luis Peña Real</title>
     <link
@@ -30,7 +31,17 @@
         Text="Color"
         ClientInstanceName="label"
       />
+      <table>
+        <thead></thead>
+        <tbody>
+          <asp:DropDownList runat="server" id="ddldisa">
+            <asp:ListItem>31</asp:ListItem>
+          </asp:DropDownList>
+        </tbody>
+      </table>
+      <asp:Label ID="lblmessage" runat="server"></asp:Label>
     </form>
+
     <div class="container" ID="DVD" runat="server"></div>
   </body>
 </html>

@@ -1,27 +1,39 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+
+using System.Web;
+using System.Web.Security;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Web.UI.WebControls.WebParts;
+
+using System.Xml.Linq;
+
 namespace MiPagina
 {
     public class Actividad3 : Page
     {
         public Estadisticas estadisticas = new Estadisticas();
         public Label ASPxLabel2;
+        public Label lblmessage;
         protected void Page_Init(object sender, EventArgs e)
         {
             String tabla = @"<table class='table table-striped table-dark'>
         <thead>
             <tr>
-              <th scope='col'>#</th>
-              <th scope='col'>Boleta</th>
-              <th scope='col'>Nombre</th>
-              <th scope='col'>Calificacion</th>
+                <th scope='col'>#</th>
+                <th scope='col'>Boleta</th>
+                <th scope='col'>Nombre</th>
+                <th scope='col'>Calificacion</th>
             </tr>
         </thead>
 
-          <tbody>
+        <tbody>
  ";
             var i = 0;
             foreach (Alumno alumno in estadisticas.alumnos)
@@ -31,18 +43,34 @@ namespace MiPagina
                         <th scope='row'>" + (i + 1) + @"</th>
                         <td>" + alumno.Boleta + @"</td>
                         <td>" + alumno.Nombre + @"</td>
-                        <td>@fat</td>
+                        <td> 
+
+                            <select class='custom-select'   ID='testSelect' name='testSelect' >
+                                <option value='0'>0</option>
+                                <option value='1'>1</option>
+                                <option value='2'>2</option>
+                                <option value='3'>3</option>
+                                <option value='4'>4</option>
+                                <option value='5'>5</option>
+                                <option value='6'>6</option>
+                                <option value='7'>7</option>
+                                <option value='8'>8</option>
+                                <option value='9'>9</option>
+                                <option value='10'>10</option>
+                            </select>
+                        </td>
                     </tr>
                 ";
                 i++;
 
             }
 
-            tabla += "   </tbody>  </table>";
+            tabla += @"   </tbody>  </table>  ";
             ASPxLabel2.Text += tabla;
         }
         public void btnclick_Click(object sender, EventArgs e)
         {
+            Response.Write("XD");
 
 
         }

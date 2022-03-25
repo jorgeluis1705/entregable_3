@@ -21,6 +21,8 @@ namespace MiPagina
         public Estadisticas estadisticas = new Estadisticas();
         public Label ASPxLabel2;
         public Label lblmessage;
+
+
         protected void Page_Init(object sender, EventArgs e)
         {
             String tabla = @"<table class='table table-striped table-dark'>
@@ -45,14 +47,14 @@ namespace MiPagina
                         <td>" + alumno.Nombre + @"</td>
                         <td> 
 
-                            <select class='custom-select' id='ddlFruits' name='Fruit'     >
+                            <select class='custom-select' id='ddlColors' name='Fruit'     >
                                 <option value='0'>0</option>
                                 <option value='1'>1</option>
                                 <option value='2'>2</option>
                                 <option value='3'>3</option>
                                 <option value='4'>4</option>
                                 <option value='5'>5</option>
-                                <option value='6'>6</option>
+                                <option value='6' selected>6</option>
                                 <option value='7'>7</option>
                                 <option value='8'>8</option>
                                 <option value='9'>9</option>
@@ -70,7 +72,21 @@ namespace MiPagina
         }
         public void btnclick_Click(object sender, EventArgs e)
         {
-            Response.Write(Request.Form["Fruit"]);
+            var califiaciones = Request.Form["Fruit"];
+            string[] arrayValues = califiaciones.Split(',');
+
+            Response.Write("<br/>");
+            int index = 0;
+            foreach (var calif in arrayValues)
+            {
+                estadisticas.alumnos[index].Calificacion = int.Parse(calif);
+                Response.Write(estadisticas.alumnos[index].Calificacion + " " + estadisticas.alumnos[index].Nombre + "<br/>");
+
+                index += 1;
+            }
+
+
+
         }
     }
 
@@ -92,18 +108,18 @@ namespace MiPagina
         public String Nombre
         {
             get { return nombre; }
-            set { value = nombre; }
+            set { nombre = value; }
         }
         public String Boleta
         {
             get { return boleta; }
-            set { value = boleta; }
+            set { boleta = value; }
         }
 
         public int Calificacion
         {
             get { return calificacion; }
-            set { value = calificacion; }
+            set { calificacion = value; }
         }
     }
     public class Estadisticas

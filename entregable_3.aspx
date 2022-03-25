@@ -18,26 +18,23 @@ Inherits="MiPagina.Actividad3" %>
     <h1 class="text-danger text-center">Hola</h1>
 
     <form runat="server">
-      <asp:Button
-        ID="btnclick"
-        runat="server"
-        Text="Click"
-        onclick="btnclick_Click"
-        class="btn btn-primary"
-      />
       <asp:Label
         ID="ASPxLabel2"
         runat="server"
-        Text="Color"
+        Text=""
         ClientInstanceName="label"
       />
 
       <asp:Label ID="lblmessage" runat="server"></asp:Label>
-
+      <asp:Button
+        ID="btnclick"
+        runat="server"
+        Text="Calcular calificaciones"
+        onclick="btnclick_Click"
+        class="btn btn-primary"
+      />
       <br />
       <br />
     </form>
-
-    <div class="container" ID="DVD" runat="server"></div>
   </body>
 </html>

@@ -35,6 +35,7 @@ Inherits="MiPagina.Actividad3" %>
       />
       <br />
       <br />
+      <asp:Label ID="lblResultados" runat="server"></asp:Label>
     </form>
   </body>
 </html>

@@ -21,7 +21,7 @@ namespace MiPagina
         public Estadisticas estadisticas = new Estadisticas();
         public Label ASPxLabel2;
         public Label lblmessage;
-
+        public Label lblResultados;
 
         protected void Page_Init(object sender, EventArgs e)
         {
@@ -80,11 +80,32 @@ namespace MiPagina
             foreach (var calif in arrayValues)
             {
                 estadisticas.alumnos[index].Calificacion = int.Parse(calif);
-                Response.Write(estadisticas.alumnos[index].Calificacion + " " + estadisticas.alumnos[index].Nombre + "<br/>");
 
                 index += 1;
             }
 
+            lblResultados.Text = @"
+        <table class='table table-sm'>
+            <thead>
+                <tr>
+                    <th scope='col' class='bg-success'>% Aprobados</th>
+                    <th scope='col' class='bg-danger'>% Reprobados</th>
+                    <th scope='col' class='bg-primary'>Promedio</th>
+                    <th scope='col' class='bg-warning'>Calf Min</th>
+                    <th scope='col' class='bg-info'>Calf Max</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope='row'>" + estadisticas.CantidadAprobados() + @"</th>
+                    <td>" + estadisticas.CantidadReprobados() + @"</td>
+                    <td>" + estadisticas.PromedioGeneral() + @"</td>
+                    <td>" + estadisticas.CalificacionMin() + @"</td>
+                    <td>" + estadisticas.CalificacionMax() + @"</td>
+                </tr>
+            </tbody>
+        </table>
+            ";
 
 
         }
@@ -128,16 +149,74 @@ namespace MiPagina
 
         public Estadisticas()
         {
-            this.alumnos.Add(new Alumno("2019602500", "a"));
-            this.alumnos.Add(new Alumno("2019602500", "b"));
-            this.alumnos.Add(new Alumno("2019602500", "c"));
-            this.alumnos.Add(new Alumno("2019602500", "d"));
-            this.alumnos.Add(new Alumno("2019602500", "e"));
-            this.alumnos.Add(new Alumno("2019602500", "f"));
-            this.alumnos.Add(new Alumno("2019602500", "g"));
-            this.alumnos.Add(new Alumno("2019602500", "h"));
-            this.alumnos.Add(new Alumno("2019602500", "i"));
-            this.alumnos.Add(new Alumno("2019602500", "j"));
+            this.alumnos.Add(new Alumno("2019602525", "Alan"));
+            this.alumnos.Add(new Alumno("2019602511", "Beto"));
+            this.alumnos.Add(new Alumno("2019602545", "Anuel"));
+            this.alumnos.Add(new Alumno("2019602588", "Sergio"));
+            this.alumnos.Add(new Alumno("2019602599", "Ruben"));
+            this.alumnos.Add(new Alumno("2019602566", "Juan"));
+            this.alumnos.Add(new Alumno("2019602513", "Luis"));
+            this.alumnos.Add(new Alumno("2019602575", "Eduardo"));
+            this.alumnos.Add(new Alumno("2019602598", "Roman"));
+            this.alumnos.Add(new Alumno("2019602565", "Jose"));
+        }
+
+        public double CantidadAprobados()
+        {
+            var resultado = 0;
+            var CantApro = 0;
+            foreach (Alumno alumno in alumnos)
+            {
+                if (alumno.Calificacion >= 6)
+                {
+                    CantApro++;
+                }
+            }
+            return ((double)CantApro / alumnos.Count) * 100;
+        }
+        public double CantidadReprobados()
+        {
+            var resultado = 0;
+            var CantReprobados = 0;
+            foreach (Alumno alumno in alumnos)
+            {
+                if (alumno.Calificacion < 6)
+                {
+                    CantReprobados++;
+                }
+            }
+            return ((double)CantReprobados / alumnos.Count) * 100;
+
+        }
+        public double PromedioGeneral()
+        {
+            double promGrupo = 0;
+            foreach (Alumno alumno in alumnos)
+            {
+                promGrupo += alumno.Calificacion;
+            }
+            return promGrupo / alumnos.Count;
+
+        }
+        public double CalificacionMax()
+        {
+            List<int> calificaciones = new List<int>();
+            foreach (Alumno alumno in alumnos)
+            {
+                calificaciones.Add(alumno.Calificacion);
+            }
+            return calificaciones.Max();
+
+        }
+        public double CalificacionMin()
+        {
+            List<int> calificaciones = new List<int>();
+            foreach (Alumno alumno in alumnos)
+            {
+                calificaciones.Add(alumno.Calificacion);
+            }
+            return calificaciones.Min();
+
         }
 
     }

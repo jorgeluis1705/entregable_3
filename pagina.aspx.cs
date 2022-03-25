@@ -45,7 +45,7 @@ namespace MiPagina
                         <td>" + alumno.Nombre + @"</td>
                         <td> 
 
-                            <select class='custom-select'   ID='testSelect' name='testSelect' >
+                            <select class='custom-select' id='ddlFruits' name='Fruit'     >
                                 <option value='0'>0</option>
                                 <option value='1'>1</option>
                                 <option value='2'>2</option>
@@ -70,9 +70,7 @@ namespace MiPagina
         }
         public void btnclick_Click(object sender, EventArgs e)
         {
-            Response.Write("XD");
-
-
+            Response.Write(Request.Form["Fruit"]);
         }
     }
 

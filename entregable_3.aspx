@@ -31,15 +31,11 @@ Inherits="MiPagina.Actividad3" %>
         Text="Color"
         ClientInstanceName="label"
       />
-      <table>
-        <thead></thead>
-        <tbody>
-          <asp:DropDownList runat="server" id="ddldisa">
-            <asp:ListItem>31</asp:ListItem>
-          </asp:DropDownList>
-        </tbody>
-      </table>
+
       <asp:Label ID="lblmessage" runat="server"></asp:Label>
+
+      <br />
+      <br />
     </form>
 
     <div class="container" ID="DVD" runat="server"></div>
